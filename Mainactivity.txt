@@ -1,0 +1,24 @@
+  Button start,stop;
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        start=findViewById(R.id.b1);
+        stop=findViewById(R.id.b2);
+        start.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startService(new Intent(getApplicationContext(),MPservice.class));
+                Toast.makeText(MainActivity.this, "START MUSIC", Toast.LENGTH_SHORT).show();
+            }
+        });
+        stop.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                stopService(new Intent(getApplicationContext(),MPservice.class));
+                Toast.makeText(MainActivity.this,"STOP MUSIC",Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
